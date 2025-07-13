@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video to Cartoon Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    input[type="file"], select, button {
+      display: block;
+      width: 100%;
+      margin: 15px 0;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #2d89ef;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1b5fc6;
+    }
+    .output {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .output video {
+      width: 100%;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎥 Video to Cartoon Converter (Demo)</h1>
+    <form id="videoForm">
+      <label for="videoInput">Upload your video:</label>
+      <input type="file" id="videoInput" accept="video/*" required /><label for="styleSelect">Select Cartoon Style:</label>
+  <select id="styleSelect" required>
+    <option value="2d">2D Cartoon</option>
+    <option value="pixar">Pixar Style</option>
+    <option value="anime">Anime Style</option>
+    <option value="sketch">Sketch Drawing</option>
+  </select>
+
+  <button type="submit">Convert to Cartoon</button>
+</form>
+
+<div class="output" id="outputSection">
+  <p><strong>Preview (Demo Only):</strong></p>
+  <video id="previewVideo" controls style="display:none;"></video>
+</div>
+
+  </div>  <script>
+    const form = document.getElementById("videoForm");
+    const videoInput = document.getElementById("videoInput");
+    const previewVideo = document.getElementById("previewVideo");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const file = videoInput.files[0];
+
+      if (file) {
+        const url = URL.createObjectURL(file);
+        previewVideo.src = url;
+        previewVideo.style.display = "block";
+        alert("✅ This is a demo version. Real cartoon conversion will happen after backend setup with Runway API on Render.com");
+      } else {
+        alert("Please upload a video file first.");
+      }
+    });
+  </script></body>
+</html>
